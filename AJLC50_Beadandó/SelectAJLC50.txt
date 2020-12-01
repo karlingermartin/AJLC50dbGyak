@@ -1,0 +1,44 @@
+1)	Kérdezzük le az egyes csapatok nemzetiségét
+SELECT Név, Ország FROM Csapat;
+
+2)	Irassuk ki a Pilóták nevét és életkorát
+SELECT név, kor FROM Pilóta
+
+3)	Irassuk ki a Verseny tábla összes adatát
+SELECT * FROM verseny
+
+4)	Irassuk ki a különböző versenytípusokat úgy hogy minden típus csak egyszer szerepeljen
+SELECT Distinct Típus FROM Időjárás;
+
+5)	Irassuk ki a 35 és 53 év közötti Főmérnökök neveit.
+SELECT Név FROM Főmérnök WHERE Kor BETWEEN 35 AND 53
+
+
+
+Bonyolultabb:
+
+6)	Kérdezzük le az átlagosnál idősebb versenyzők nevét és életkorát.
+SELECT Név, Kor FROM Pilóta WHERE Kor > (SELECT AVG(Kor) FROM Pilóta);
+
+7)	Csoportosítsuk nemzetiség  szerint a versenyzők átlagos testmagasságát.
+SELECT "NEMZETISÉG", avg(magasság) Átlagmagasság FROM Pilóta GROUP BY "NEMZETISÉG";
+
+8)	Listázzuk a ’L’ kezdőbetűjű emberek adatait.
+SELECT * FROM Pilóta WHERE Név LIKE 'L%'
+
+
+9)	Irassuk ki hogy ki volt az a magyar aki a 2017-es versenyen indult.
+SELECT Pilóta.név AS Induló FROM Pilóta
+JOIN Versenyez on versenyez.versenyző=Pilóta.DRIVERID
+JOIN Verseny on versenyez.verseny=Verseny.RACEID
+WHERE verseny.dátum like '%2017' AND Pilóta.Nemzetiség='Magyar'
+
+10)	Irassuk ki a versenyzőket szponzoraikkal (azokat is akiknek nincs)
+SELECT "PILÓTA".név, szponzor.név FROM "TÁMOGATJA"
+right OUTER JOIN szponzor on szponzor.spid = "TÁMOGATJA".szponzor 
+right outer join Pilóta on Pilóta.DriverID = támogatja.versenyző
+
+
+
+
+

@@ -1,0 +1,67 @@
+  Insert Into Pilóta Values(10001, 'LUCA FILIPPI', 28, 'Man', 'Olasz', 178, 53);
+  Insert Into Pilóta Values(10002, 'NORBERT MICHELISZ ', 36, 'Man', 'Magyar', 165, 3);
+  Insert Into Pilóta Values(10003, 'AURÉLIEN COMTE', 43, 'Man', 'Francia', null, null);
+  Insert Into Pilóta Values(10004, 'BENCE BOLDIZS', 24, 'Man', 'Magyar', 170, 1);
+  Insert Into Pilóta Values(10005, 'LUCA ENGSTLER', 38, 'Man', 'Német', 187, 37);
+  Insert Into Pilóta Values(10006, 'Angelique Kerber', 32, 'Woman', 'Német', 173, 89);
+  Insert Into Pilóta Values(10007, 'Inna Oszipenko', 27, 'Woman', 'Ukrán', 167, 62);
+
+  Insert Into Főmérnök Values(2801, 'Patrick Mouratoglou', 53, 'Man', ' French');
+  Insert Into Főmérnök Values(1802, 'Mike Estep', 63, 'Man', 'USA');  
+  Insert Into Főmérnök Values(5803, 'Torben Beltz', 52, 'Man', 'Germany');
+  Insert Into Főmérnök Values(802, 'Bort Becker', 80, 'Man', 'German');  
+  Insert Into Főmérnök Values(3804, 'Dimitry Radomsky', 35, 'Man', 'Russia');  
+  Insert Into Főmérnök Values(3005, ' Martin Zejcsev', 54, 'Woman', 'Ukrain');
+  Insert Into Főmérnök Values(5962, 'Nagy Zoltán', 23, 'Woman', 'Magyar');  
+
+  Insert Into Csapat values(29, 'Italy', 'BRC', null, null);
+  Insert Into Csapat values(30, 'Germany', 'GTF', null, null);
+  Insert Into Csapat values(40, 'France', 'FTA', null, null);
+  Insert Into Csapat values(52, 'Canada', 'CTC', null, null);
+  Insert Into Csapat values(63, 'Norway', 'NTA', null, null);
+
+  Insert Into Verseny values(20008, 'Norway', 'Oslo', '05/07/2018',63);
+  Insert Into Verseny values(19709, 'Mauritius', 'Port Louis', '06/25/2016',30 );
+  Insert Into Verseny values(19890, 'France', 'Pau', '07/13/2017',40);
+  Insert Into Verseny values(19511, 'Italy', null, '08/07/2015',29);
+  Insert Into Verseny values(19571, 'Canada', 'Ottawa', '07/29/2015',52);
+
+
+  Insert Into Szponzor values(1, 'Adidas', 403);
+  Insert Into Szponzor values(2, 'Rolex',800);
+  Insert Into Szponzor values(3, 'Puma', 404);
+  Insert Into Szponzor values(4, 'Nike', 420);
+  Insert Into Szponzor values(5, 'BMW', 690);
+
+  Insert Into Alkalmazza values(3804, 218, 63);
+  Insert Into Alkalmazza values(2801, 552, 40);
+  Insert Into Alkalmazza values(5803, 329, 29);
+  Insert Into Alkalmazza values(802, 663, 52);
+  Insert Into Alkalmazza values(3005, 440, 30);
+
+  Insert Into Időjárás values('Esős', 19511);
+  Insert Into Időjárás values('Napos', 19709);
+  Insert Into Időjárás values('Felhős', 20008);
+  Insert Into Időjárás values('Napos', 19571);
+  Insert Into Időjárás values('Felhős', 19890);
+
+
+  Insert Into Versenyez values(10001, 3, 19511);
+  Insert Into Versenyez values(10007, 5, 19571);
+  Insert Into Versenyez values(10005, 4, 19571);
+  Insert Into Versenyez values(10004, 2, 19890);
+  Insert Into Versenyez values(10002, 1, 19890);
+
+  Insert Into Támogatja values(10004, 2);
+  Insert Into Támogatja values(10002, 4);
+  Insert Into Támogatja values(10001, 3);
+  Insert Into Támogatja values(10003, 1);
+  Insert Into Támogatja values(10006, 2);
+  Insert Into Támogatja values(10007, 5);
+
+  Insert Into Dolgoznak values(10001, 2801);
+  Insert Into Dolgoznak values(10002, 5962);
+  Insert Into Dolgoznak values(10003, 2801);
+  Insert Into Dolgoznak values(10004, 802);
+  Insert Into Dolgoznak values(10006, 5803);
+  Insert Into Dolgoznak values(10007, 2801);

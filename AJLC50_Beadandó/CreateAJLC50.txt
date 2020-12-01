@@ -1,0 +1,85 @@
+create table Pilóta(
+   DRIVERID int primary key,
+   Név varchar(60) not null,
+   Kor number(3) check (Kor >= 0),
+   Neme varchar(6) not null,
+   Nemzetiség varchar(40),
+   Magasság Number(3) check (Magasság >= 140),
+   Ranglista_helyezés int   
+)
+
+create table Főmérnök(
+   EngID int primary key,
+   Név varchar(60),
+   Kor int,
+   Neme varchar(5),
+   Nemzetiség varchar(40)
+)
+
+
+create table Csapat(
+   TeamID int primary key,
+   Ország varchar(60) not null,
+   Név varchar(10) not null,
+   Versenyző int,
+   Főmérnök int,
+   Foreign key (Versenyző) References Pilóta(DriverID),
+   Foreign key (Főmérnök) References Főmérnök(EngID)
+)
+
+create table Verseny(
+   RaceID int primary key,
+   Ország varchar(60),
+   Város varchar(50),
+   Dátum Date default sysdate,
+   Csapat int,
+   Foreign key (Csapat) References Csapat(TeamID)
+	
+)
+
+create table Szponzor(
+	SpID int primary key,
+	Név varchar(50),
+	Pénz int
+)
+
+
+create table Alkalmazza(
+	Főmérnök int,
+	Fizetés int,
+	Csapat int,
+	Foreign key (Csapat) References Csapat(TeamID),
+	Foreign key (Főmérnök) References Főmérnök(EngID)
+)
+
+create table Időjárás(
+	Típus varchar(50) not null,
+	Verseny int,
+	Foreign key (Verseny) References Verseny(RaceID)
+)
+	
+
+create table Versenyez(
+   Versenyző int,
+   Helyezés number(2) check (Helyezés>=0),
+   Verseny int,
+   Foreign key (Versenyző) References Pilóta(DriverID),
+   Foreign key (Verseny) References Verseny(RaceID)
+)
+
+
+create table Támogatja(
+   Versenyző int,
+   Szponzor number(4),
+   Primary key (Versenyző, Szponzor),
+   Foreign key (Versenyző) References Pilóta(DriverID),
+   Foreign key (Szponzor) References Szponzor(SpID)
+)
+
+create table Dolgoznak(
+   Versenyző int,
+   Főmérnök int,
+   primary key (Versenyző, Főmérnök),
+   Foreign key (Versenyző) References Pilóta(DriverID),
+   Foreign key (Főmérnök) References Főmérnök(EngID)
+)
