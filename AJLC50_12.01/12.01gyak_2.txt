@@ -1,0 +1,37 @@
+9.
+RENDELÉSEK(
+	datum DATE;
+	vevo_kod VARCHAR(250);
+Q	vevo_nev VARCHAR(100);
+	termek_neve VARCHAR(50);
+	egysegar INT;
+	osszar INT;
+	)
+
+PK:datum, vevo_kod
+hibás FD: vevo_kod->vevo_nev
+	  termek_neve_>egysegar
+
+Táblák:
+T1(datum,vevo_kod,termek_neve, osszar)
+T2(vevo_kod, vevo_nev)
+T3(termek_neve, egysegar)
+
+
+
+10.
+SALES REPORT(
+	SALESPERSON_NUMBER;
+	SALESPERSON_NAME;
+	SALES_AREA;
+	COSTUMER_NUMBER;
+	COSTUMER_NAME;
+	WAREHOUSE_NUMBER;
+	WAREHOUSE_LOCATION;
+	SALES_AMOUNT;
+	)
+
+T1(SALESPERSON_NUMBER, SALESPERSON_NAME, SALES_AREA)
+T2(COSTUMER_NUMBER, COSTUMER_NAME, WAREHOUSE_AREA)
+T3(WAREHOUSE_NUMBER, WAREHOUSE_LOCATION)
+T4(SALESPERSON_NUMBER, COSTUMER_NUMBER, SALES_AMOUNT)

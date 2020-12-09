@@ -1,0 +1,35 @@
+1.
+CLI:
+Parancs függvény hívással, SQL és egyéb parancsok ismerete, elterjedetebb mint az E-SQL, és több adatbázissal áll kapcsolatban
+
+E-SQL:
+Parancs prefix alapján működik, SQL parancsokkal működik, kevésbé használt, komunnikálni képes az adatbázissal
+
+2.
+1, sqlite3.h header beilesztés
+
+2, A sq.lite3.c beillesztése a projektbe
+
+
+3.
+#include <stdio.h>
+#include <stdlib.h>
+#include "sqlite3.h"
+
+int main(int argc, char* argv[])
+{
+    sqlite3 *db;
+    char  *zErrMsg = 0;
+    int rc;
+
+    rc = sqlite3_open("pelda.db", &db);
+
+    if( rc ){
+        fprintf(stderr, "Adatbázis hiba [nem lehet megnyitni]: %s\n", sqlite3_errmsg(db));
+        return 0;
+    } 
+    else {
+        	fprintf(stderr, "Opened database successfully\n");
+    }
+    sqlite3_close(db);
+}

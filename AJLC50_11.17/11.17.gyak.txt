@@ -1,0 +1,20 @@
+USE factory;
+ALTER TABLE alkatresz ADD (ar INT CHECK(ar>0));
+SELECT nev FROM gyarto WHERE adoszam NOT IN (SELECT gyarto FROM termek);
+CREATE VIEW et AS SELECT MAX (t.nev) nev, t.tkos, COUNT(*)db FROM TERMEK t INNER JOIN egysegek e ON e.aru=t.tkod GROUP BY t.tkod;
+SELECT nev FROM et WHERE db = (SELECT MAX(db) FROM et);
+
+USE school;
+SELECT tipus AVG(ar), MAX(ar) FROM tanfolyam GROUP BY tipus;
+SELECT megnevezes, CASE WHEN ar>100000 THEN 'draga' ELSE 'olcso' END arkategory FROM termek;
+CREATE VIEW tdb AS SELECT MAX(t.megnevezes) nev, COUNT(*)db FROM tanfolyam t INNER JOIN befizetes b ON b.kurzus = t.tkod GROUP BY t.tkod;
+SELECT nev, CASE WHEN db<10 THEN 'nepszeru' ELSE 'nem nepszeru' END letszam FROM tdb;
+
+USE factory2;
+ALTER TABLE termek DROP COLOUMN gyartok;
+CREATE TABLE gyartja (termek INT REFERENCES termek, gyarto INT REFERENCES gyartok);
+
+ALTER TABLE termek ADD(kategoria CHAR(50));
+CREATE VIEW kgy AS SELECT G.adoszam, t.kategoria FROM gyarto g LEFT OUTER JOIN termek t ON g.adoszam = t.gyarto GROUP BY g.adoszam, t.kategoria;
+CREATE VIEW kgy2 AS SELECT kategoria, COUNT(adoszam) db FROM kgy GROUP BY kategoria;
+SELECT kategoria FROM kgy2 WHERE db = (SELECT COUNT(*) FROM gyarto);

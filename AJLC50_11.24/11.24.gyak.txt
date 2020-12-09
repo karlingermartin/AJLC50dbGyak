@@ -1,0 +1,60 @@
+USE gyak11;
+
+CREATE TABLE Tulajdonos(TKód INT(3) Primary Key, Név Varchar(20) Not Null, Város Varchar(20));
+CREATE TABLE Autó (Rendszám Char(7) Primary Key, Típus Varchar(25) Not Null , Szín Varchar(15), Kor int(2), Ár INT(8), Tulaj int(4), Foreign key(Tulaj) REFERENCES Tulajdonos(TKód));
+CREATE TABLE Kategoria (Knév VARCHAR(12), AlsóHP INT(4), FelsőHP Int(4));
+
+Insert Into Tulajdonos Values(101, 'Nagy Béla', 'Budapest');
+Insert Into Tulajdonos Values(102, 'Kormondi Ágnes', 'Veszprém');
+Insert Into Tulajdonos Values(103, 'Filip Péter', 'Miskolc');
+Insert Into Tulajdonos Values(104, 'Lakós Márton', 'Tokaj');
+Insert Into Tulajdonos Values(105, 'Tolnai Szilárd', 'Debrecen');
+Insert Into Tulajdonos Values(106, 'Kovács Péter', 'Répáshuta');
+Insert Into Tulajdonos Values(107, 'Magas Nándor', 'Eger');
+
+INSERT INTO Autó VALUES('FDT-581', 'Peugeout 206', 'Piros', 18, 390, 101);
+INSERT INTO Autó VALUES('IKL-789', 'Fiat 500', 'Zöld', 15, 450, 105);
+INSERT INTO Autó VALUES('LOH-995', 'Suzuki Swift', 'Piros', 13, 620, 102);
+INSERT INTO Autó VALUES('BTM-501', 'Toyota Corolla', 'Fehér', 3, 1850, 105);
+INSERT INTO Autó VALUES('KLT-984', 'Volkswagen Golf', 'Szürke', 7, 1250, 106);
+INSERT INTO Autó VALUES('APX-471', 'Opel Vectra', 'Fekete', 12, 990, 107);
+INSERT INTO Autó VALUES('GRP-285', 'BMW 520', 'Fekete', 6, 3250, 102);
+INSERT INTO Autó VALUES('LKF-530', 'Renault Twingo', 'Fekete', 16, 280, Null);
+INSERT INTO Autó VALUES('HOL-156', 'Suzuki Splash', 'Fekete', 16, 500, Null);
+
+INSERT INTO Kategoria VALUES('Selejt', 0, 400);
+INSERT INTO Kategoria Values ('Olcsó', 401, 1000);
+INSERT INTO Kategoria VAlues('Átlagos', 1001, 2500);
+Insert Into Kategoria values('Drága', 2501, 5000);
+
+
+SELECT autó.Rendszám, tulajdonos.Név
+FROM tulajdonos
+INNER JOIN autó
+ON tulajdonos.tkód=autó.Tulaj;
+
+SELECT autó.*
+FROM tulajdonos
+INNER JOIN autó
+ON tulajdonos.tkód=autó.Tulaj
+WHERE tulajdonos.Város='Miskolc';
+
+SELECT autó.Típus, autó.Ár, Kategoria.Knév
+FROM autó
+
+SELECT tulajdonos.Név, autó.Rendszám, tulajdonos.TKód
+FROM tulajdonos
+JOIN autó
+ON tulajdonos.tkód=autó.Tulaj
+
+SELECT tulajdonos.Név, autó.Rendszám, tulajdonos.TKód
+FROM tulajdonos
+WHERE autó.rendszám!=null
+JOIN autó
+ON tulajdonos.tkód=autó.Tulaj;
+
+SELECT autó.Rendszám
+FROM autó
+JOIN tulajdonos
+ON tulajdonos.tkód=autó.Tulaj
+WHERE avg(autó.Ár)>autó.Ár;
